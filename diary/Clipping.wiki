@@ -1,0 +1,37 @@
+== Line Clipping ==
+    The line clipping algorithm are a set of algorithm that are used for only processing the lines which are in the view not every line.
+        == Line Clipping Algorithms ==
+            1) Sutherland Cohen Algorithm-
+                Pseudo Code
+                    We have a four digit opcode that represents the following Ymax Ymin Xmax Xmin.It takes values 0 and 1 
+                        0 in the case when the situation is favourable(Plotting) and 1 for un favourable.
+                    * Trivial Accepts - The OR of opcodes of two end points is zero so  line is visible
+                    * Trivial Rejects - The AND of opcodes of two end points is not zero.
+                    In the other cases we iterate over all the edges of the clipping window:
+                        For all the lines to be clipped =>
+                            Let P1 and P2 be two points on the line to be clipped:
+                                if P2 is inside the favourable region swap (P1,P2)
+                            Replace P2 by E the intersection point.
+            2) Liang Barsky Algorithm-
+                Pseudo Code
+                    We have a clipping window C rectangular in shape.
+                    Calculate n.(P - E) for any arbitrary point P on the line where the equation of the line is in  the parametric form 
+                        Calculate parameter t for all cases in which the line enters the clipping window
+                            => Take the max of that parameter
+                        Calculate parameter t for all cases in which the line exists the clipping window
+                            => Take the min of that parameter
+                        Draw the line using the parameter tmin and tmax.
+            3) Cyrus Beck Algorithm - In this extend the Liang Barsky algorithm to other convex polygons for clipping.
+
+== Polygon Clipping ==
+    == SutherLand Hodgeman ==
+        Pseudo Code
+        * Repeat for every edge of clipping window
+        1) Take a polygon and start processing the vertices one by one from input polygon.
+        2) Let Pi be the last processed vertex.Then P(i+1) is the next vertex to be processed.
+        3) If the vertex P(i) was added to the output 
+           a) If P(i+1) lies on the favourable side add it to the output.
+           b) Else add the intersection I of the clipping edge with line from P(i) to P(i+1).
+        4) else if P(i+1) lies in the favourable region add intersection of (P(i),P(i+1),E) and P(i+1) in the output list.
+        5) Input Polygon = Output Polygon.
+    == 

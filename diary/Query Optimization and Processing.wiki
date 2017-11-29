@@ -1,0 +1,36 @@
+== RQE == 
+    * Grouping and Aggregation
+    * If index is present use index else use linear search.
+   == Selectivity Of Predicates ==
+        * This refers to ration of no.of selection records/no.of records. While performing an operation choose the attribute with low ratio.
+        * Always perform selection operation before project operation.
+   == Sorting == 
+        * This refers to a way of sorting large data.
+        1) Sort and store phase.
+            In this phase take each block in memory and sort the block.
+                Time - O(bi)
+        2) Merge Phase 
+            In this phase we take d(m-2) values in memory and start merging them.After the merge step there will be a chain of sorted elements of length d blocks will be stored in memory.So there will be (n/d) chains of d length. Now process these n/d chains to get d^2 length chains and no.will be (n/d^2). The total complexity of the process is 2bi * [log bi] + bi.
+
+== Join Operations ==
+    Consider two tables(R and B)
+    === Brute Force Join ===
+        1) The join takes place in such a way that there is one block reserved for output and one for the current processed block.
+        2) Take m-2 blocks on the file system and store it in memory.
+        3) Process each bi block for that m-2 block and calculate join.
+        Complexity = [ai/(m-2)]*bi + ai
+        
+    === Index Based Join ===
+        1) If the index is built on the joining field of the join. 
+           Then for every ai-
+                Find the bi which satisfy the given property
+                
+           The complexity is O(ai*h(bi)))
+    === Hash Join === 
+        1) In this type of join we calculate the hash for every key and move the record into corrosponding block and write it.
+        2) The block contains the elements which are the potential join candidates.Perform join on those candidates.
+        3) Output the list.
+    === Sort and Merge Join ===
+        If the relation attribute on which join is to be performed is sorted            then we can perform a merge operation using the merge analogus to the merge that we perform in merge sort.
+        If one index is sorted we can still try for sorting one index and merging.
+        

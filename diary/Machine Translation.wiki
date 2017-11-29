@@ -1,0 +1,34 @@
+= Machine Translation Using IBM 1 Model =
+    
+    The IBM model 1 uses the concept of Statistical Machine Translation.
+    The two main components are the
+    1) *Alignment Part*
+    2) *Generation Part*
+        == Alignment ==
+        The alignment refers to aligning the words in french to words in english.
+        For defining it for every word j in french we define a function aj which contains the index of english word i to which it is aligned.
+        _Example_
+            French - das Haus ist klein
+            English - the house is small
+            Alignment das → the , Haus → house , ist → is , klein → small
+            the a(0) = 1 , a(1) = 2 , a(2) = 3 , a(4) = 4
+            *The function a is one to many*
+        == Generation ==
+        This part refers to probablity of generation of a token in french corresponding to the english token to which it is aligned.
+    == IBM Model 1 ==
+            We can write the probability of the translated sentence as P(F1=f1,F2= f2 ,..,A1 = a1,A2 =a2 ,..,| E1 = e1,E2 = e2,E3 = e3,...,L = l,M= m). Here L and M are the parameters corresponding to the length of the french and english sentence.
+        == Applying Chain Rule of Probability ==
+            P(F1=f1,F2= f2 ,..,A1 = a1,A2 =a2 ,..,| E1 = e1,E2 = e2,E3 = e3,...,L = l,M= m) = P(F1=f1,F2= f2 ,..|A1 = a1,A2 =a2 ,.., E1 = e1,E2 = e2,E3 = e3,...,L = l,M= m)*P(A1 = a1,A2 =a2 ,..,| E1 = e1,E2 = e2,E3 = e3,...,L = l,M= m)
+            * Now we have two parts the alignment part  => P(A1 = a1,A2 =a2 ,..,| E1 = e1,E2 = e2,E3 = e3,...,L = l,M= m) 
+                which after independence assumption can be written as => Product(P(Ai = ai| L = l , M= m)) for all i
+                The above part serve as parameter q(ai,i,l,m).
+            * The other part after assuming independence can be written as Product(P(Fi = fi|E(ai) = e(ai)),L,M)) for all i belongs to {1,2,3..j}
+                This serves as parameter t(fi|ei)
+                
+         == Model ==
+               P(f,a|e) = P(e)* P(f|e)
+               
+               
+               
+            
+                

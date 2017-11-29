@@ -1,0 +1,63 @@
+= File Organization and Indexing =
+    The RDBMS takes full charge of managing the memory of the file system.
+    == Type of Allocation ==
+        1) Fixed Allocation - In this type of allocation we keep the record size fixed .The advantage of this method is we can find location of any record.Meta information stored in header.
+        2) Dynamic Size - In this every record has different size due to data size difference.There are seperators at start and end of each record.
+    == Data Allocatiom ==
+        1) Continuous Allocation - The records are placed one after the other. Speeds up access but not utilises space effectively.
+        2) Linked Allocation - Each data item stored has a link to other data item .
+        3) Mixed Allocation - 
+    == Operations on File ==
+        1) Search 
+        2) Update
+        3) Insert
+        4) Delete
+        5) Range Search
+    == File Organization Methods ==
+        1) Heap Storage - Every thing that is to be inserted is dumped into the heap.The search operation is very costly.
+        2) Ordered Keys - In this fields are stored ordered on basis of certain key like roll no. which are used for indexing. 
+           === Operations ===        
+                1) Insertion - Costly as data items need to be moved from the point of insertion.
+                2) Deletion - Costly similar as insertion 
+                3) Search and Range Search - Efficient as it takes only O(log n) disc access for serch
+                4) Update - It is also efficient.
+        3) Hashing - In this the records are hashed on a particular field using a hash function h.
+            === Types Of Hashing ===
+                1) Static Hashing - In this type of hashing the space is divided into m buckets(0..m-1).The h(k) value maps each record to a particular bucket.In insertion if full move to overflow buckets. Same in deletion move element from overflow to bucket.
+                    ==== Pros ====
+                        Provides fast access as the data can be accessed using only one block access.
+                    ==== Cons ====
+                        Wastage of disk space.
+                        Long Overflow chains.
+                 2) Dynamic Hashing - In this we don't allocate large blocks initially .There are two primary methods of dynamic hashing that are used.
+                    ==== Extendible Hashing ====
+                        Global Depth => The trailing k bits that are used for determining the pointer of the block where the record will be placed
+                        Local Depth => This is defined as the number of bits of suffix which is similar for every record in the bucket.
+                        ====== Insert Procedure ======
+                            1) Calculate the h(key) check the last globalDepth no. of bits in the index table for pointer location.
+                            2) If the bucket is not full insert into the bucket.
+                            3) If the bucket is full but the local depth of the bucket is less then keep splitting the buckets till the depth is less then the global Depth and redistribute the records.
+                            4) If still the record cannot be inserted double the index table and increase the globalDepth by 1.
+                       ====== Delete Procedure ======
+                            _Doubt_ The total size of both the buckets need to be half the size of the bucket.
+                            1) Use the hash to go to the record.
+                            2) Delete the record and if the size of matching buckets i.e having the same globalDepth - 1 bit suffix is less then half then merge.
+                            3) If the local depth of all the buckets is less then globalDepth then decrease the globalDepth by 1.
+                    ==== Linear Hashing ====
+                        Use of hash function groups like h(i) = X mod M , h(i+1) = X mod 2M
+                        A pointer is kept which always point to the blocks which needs to be split in the case any overflow occurs.
+                        ===== Insert Procedure =====
+                            1) Keep a pointer N poiting at 0 at the start of insertion .
+                            2) Calculate h(key) if > N use h[i] else use h[i+1]
+                            3) Insert the record if overflow occurs split the bucket to which n is pointing and redistribute the entries by making use of h[i+1]
+                            4) If N reaches at the end of the buckets(2^i) reset it to 0 and change i to i+1.
+                            _No Delete Procedure_ 
+                        
+                            
+            4) Indexing - Refers to building a data structure for fast access of data records in the tables.
+                === Types Of Index ===                  
+                    1) (Ordering Index)Index on Ordered Field - This refers to building index on an ordered field. The BF = b/(Val + PSize).
+                    2) (Clustering Index) Index on the field in which many records have the same value for that column.2 options are there the linked blocks which contain a particular value of v keep their pointers or keep the pointer to the block that contains the pointers to these.
+                    3) Index on Non ordering Field - The index can also be created on non ordering fields of the relation.
+                    
+          

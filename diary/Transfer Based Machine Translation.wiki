@@ -1,0 +1,41 @@
+== Transfer Based Machine Translation ==
+    → Refers to encoding and then decoding information.
+    Translation Requires 
+        * Creativity
+        * Common Sense
+        * World Knowledge
+    As the languages become more formal their translation becomes a lot easier.
+    Basic steps involved are
+        1) Analysis of source language(Generation of TAM Markers and shallow parsing)
+        2) Transfer from SL to Target Language(The transfer is based on lexical substitution)
+        3) Generation of the target language from the structure produced in step 2.
+    Vaquous Triangle
+        This triangle describes the MT process the ends are SL → IL , IL → TL,SL →  TL.
+        In this triangle as we move up towards IL we have to do more work in analysis.
+        We can choose to transfer at any stage.
+        
+        The number of models required for indermediate stage if we have n source and m target languages is 
+            = (m + n*m + n).
+    Universal Networking Language(UNL) - This is required for making a unified representation of interlingua which can help to transfer in any language.
+    == LSMT(Linguistic Structure Based Machine Translation) ==
+        This is important for low resource languages
+        The pipe line consists of following-
+        1) Segmentation
+        2) POS Tagging
+        3) Morph Analyzer
+        4) Chunker
+        5) Transfer 
+        6) NER 
+        7) Transliteration
+        8) WSD(Word Sense Disambiguation)
+        9) Lexical Substitution
+        10) Morph Generation
+        While using shallow parsing in the transfer stage we dont have trees so we have to move chunks of objects to get the desired word order.
+        For this we need to know the rules like in English we have SVO and in Hindi we have SOV.Create movements according to these rules.
+        WSD(Word Sense Disambiguation) is stuck due to need of world knowledge.
+        *Modules in LSMT System*
+        1) One module per layer
+        2) The output of one serves as input of the other.
+        3) A pipeline is created.
+        4) A unified representation is needed for the modules.
+        

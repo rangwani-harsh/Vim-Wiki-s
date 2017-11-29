@@ -1,0 +1,18 @@
+= Personal Journal = 
+    == TODO ==
+   
+        === DBMS TODO ===
+            a) [X] Chapter 6 - Database Normalization
+            b) [X] [[Chapter 7 - File System Storage]]
+            c) [ ] Chapter 8 - B+ trees
+            d) [ ] Chapter 9 - [[Query Optimization and Processing]]
+            e) [ ] Chapter 10 - [[Transaction]]
+
+        === Computer Graphics TODO ===
+            a) [ ] [[Clipping]]
+            b) [ ] Projection
+            c) [ ] NLP 
+        === NLP Todo ===
+            a) [ ] [[Machine Translation]]
+
+            b) [ ] [[ PCFG ]] 

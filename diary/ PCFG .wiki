@@ -1,0 +1,25 @@
+== Probablistic Context Free Grammar ==
+    → In this type of grammar we take in the sentence and form groups and subgroups based on certain Grammatical Rules.
+    → There are certain rules based on which these structures are derived .
+   === Parsing With PCFG ===
+    The trees of subgroups that are possible can be generated.
+    But what if more then one trees are possible?
+        → We use statistical NLP to answer this question 
+        → Human judgements can be used but they may be a bit biased.
+    The probablistic context free grammar solves the problem.
+    Use the probablities to find the best possible parse among all the possible parse structures.
+    PCFG consists of four things ->
+        1) The Non terminals S and the Terminals T.
+        2) The probablity function q that maps the probability of : q(α → β) where α is a non-terminal and β is terminal character and q(α → βγ) where α,β and γ are non terminals.
+        4) The set of rules that are there are in R and S the starting symbol.
+    How to find the values for the q =>
+        They can be estimated using tree banks where we use maximum likelihood extimates to estimate the probability.
+            q(α → β) = count(α → β)/count(α)
+    === Methods to Parse ===
+        The CKY Algorithm for parsing using DP
+    === Lexicalised PCFG ===
+        In this we store the information of the head of the sentence too in the PCFG and calculate probabilities accordingly.
+    Problems with pcfg
+        1) Lack of senstivity of structural information.
+        2) PP attachment problem.
+    
