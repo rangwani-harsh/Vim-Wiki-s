@@ -17,7 +17,7 @@
         The number of models required for indermediate stage if we have n source and m target languages is 
             = (m + n*m + n).
     Universal Networking Language(UNL) - This is required for making a unified representation of interlingua which can help to transfer in any language.
-== LSMT(Linguistic Structure Based Machine Translation) ==
+    === LSMT(Linguistic Structure Based Machine Translation) ===
         This is important for low resource languages
         The pipe line consists of following-
         1) Segmentation
